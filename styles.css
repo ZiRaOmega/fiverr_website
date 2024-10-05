@@ -221,7 +221,10 @@ section h2 {
         font-size: 1.2rem;
         text-align: justify;
     }
-
+.about-text p a{
+    text-decoration: none;
+    color: inherit;
+}
 
 /* Product Section */
 .product-section {
