@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
+
 <body>
     <header>
         <div class="logo">
@@ -43,21 +44,99 @@
         </div>
     </section>
 
+    <!-- First Product Section -->
     <section id="products">
         <div class="container">
-            <h2>Our Products</h2>
-            <div class="product-grid">
-                <div class="product">
-                    <img src="rake.jpg" alt="Lawn Leveling Rake">
-                    <h3>Lawn Leveling Rake</h3>
-                    <p>A stainless steel rake with rounded edges to prevent flipping. XXL width of 36 inches for fast and efficient leveling.</p>
+            <h2>Our First Product</h2>
+
+            <!-- Carousel for first product -->
+            <div class="carousel">
+                <div class="carousel-inner" id="carousel-inner">
+                    <div class="carousel-item">
+                        <img src="/img/image1.jpg" alt="Lawn Leveling Rake 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/img/image2.jpg" alt="Lawn Leveling Rake 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/img/image3.jpg" alt="Rotary Lawn Aerator 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/img/image4.jpg" alt="Rotary Lawn Aerator 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/img/image5.jpg" alt="Gardening Tool 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/img/image6.jpg" alt="Gardening Tool 4">
+                    </div>
                 </div>
-                <div class="product">
-                    <img src="aerator.jpg" alt="Rotary Lawn Aerator">
-                    <h3>Rotary Lawn Aerator</h3>
-                    <p>Heavy-duty, anti-corrosion aerator that can be filled with sand for added weight. Easy to assemble and ideal for aerating your lawn.</p>
+                <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+
+            <!-- Thumbnail image queue for first product -->
+            <div class="image-queue-container">
+                <div class="image-queue" id="image-queue">
+                    <img src="/img/image1.jpg" alt="Thumbnail 1" class="queue-image active" onclick="setCurrentSlide(0)">
+                    <img src="/img/image2.jpg" alt="Thumbnail 2" class="queue-image" onclick="setCurrentSlide(1)">
+                    <img src="/img/image3.jpg" alt="Thumbnail 3" class="queue-image" onclick="setCurrentSlide(2)">
+                    <img src="/img/image4.jpg" alt="Thumbnail 4" class="queue-image" onclick="setCurrentSlide(3)">
+                    <img src="/img/image5.jpg" alt="Thumbnail 5" class="queue-image" onclick="setCurrentSlide(4)">
+                    <img src="/img/image6.jpg" alt="Thumbnail 6" class="queue-image" onclick="setCurrentSlide(5)">
                 </div>
             </div>
+
+        </div>
+    </section>
+
+    <!-- Second Product Section -->
+    <section id="products2">
+        <div class="container">
+            <h2>Our Second Product</h2>
+
+            <!-- Carousel for second product -->
+            <div class="carousel">
+                <div class="carousel-inner" id="carousel-inner2">
+                    <div class="carousel-item">
+                        <img src="/img/image7.jpg" alt="Garden Tool 7">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/img/image8.jpg" alt="Garden Tool 8">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/img/image9.jpg" alt="Garden Tool 9">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/img/image10.jpg" alt="Garden Tool 10">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/img/image11.jpg" alt="Garden Tool 11">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/img/image12.jpg" alt="Garden Tool 12">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/img/image13.jpg" alt="Garden Tool 13">
+                    </div>
+                </div>
+                <button class="prev" onclick="moveSlide2(-1)">&#10094;</button>
+                <button class="next" onclick="moveSlide2(1)">&#10095;</button>
+            </div>
+
+            <!-- Thumbnail image queue for second product -->
+            <div class="image-queue-container">
+                <div class="image-queue" id="image-queue2">
+                    <img src="/img/image7.jpg" alt="Thumbnail 7" class="queue-image active" onclick="setCurrentSlide2(0)">
+                    <img src="/img/image8.jpg" alt="Thumbnail 8" class="queue-image" onclick="setCurrentSlide2(1)">
+                    <img src="/img/image9.jpg" alt="Thumbnail 9" class="queue-image" onclick="setCurrentSlide2(2)">
+                    <img src="/img/image10.jpg" alt="Thumbnail 10" class="queue-image" onclick="setCurrentSlide2(3)">
+                    <img src="/img/image11.jpg" alt="Thumbnail 11" class="queue-image" onclick="setCurrentSlide2(4)">
+                    <img src="/img/image12.jpg" alt="Thumbnail 12" class="queue-image" onclick="setCurrentSlide2(5)">
+                    <img src="/img/image13.jpg" alt="Thumbnail 13" class="queue-image" onclick="setCurrentSlide2(6)">
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -74,6 +153,94 @@
             <p>&copy; 2024 MIANED - All Rights Reserved | <a href="http://www.mianed.com">www.mianed.com</a></p>
         </div>
     </footer>
+
+    <script>
+        let currentIndex = 0;
+        let currentIndex2 = 0;
+
+        // Functions for first product
+        function moveSlide(step) {
+            const items = document.querySelectorAll('#carousel-inner .carousel-item');
+            currentIndex = (currentIndex + step + items.length) % items.length;
+            updateCarouselPosition();
+            highlightActiveThumbnail();
+            moveThumbnails();
+        }
+
+        function setCurrentSlide(index) {
+            currentIndex = index;
+            updateCarouselPosition();
+            highlightActiveThumbnail();
+            moveThumbnails();
+        }
+
+        function updateCarouselPosition() {
+            const carouselInner = document.getElementById('carousel-inner');
+            carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        function highlightActiveThumbnail() {
+            const thumbnails = document.querySelectorAll('#image-queue .queue-image');
+            thumbnails.forEach((thumbnail, index) => {
+                if (index === currentIndex) {
+                    thumbnail.classList.add('active');
+                } else {
+                    thumbnail.classList.remove('active');
+                }
+            });
+        }
+
+        function moveThumbnails() {
+            const thumbnailContainer = document.getElementById('image-queue');
+            thumbnailContainer.style.transform = `translateX(-${currentIndex * 110}px)`;
+        }
+
+        // Functions for second product
+        function moveSlide2(step) {
+            const items = document.querySelectorAll('#carousel-inner2 .carousel-item');
+            currentIndex2 = (currentIndex2 + step + items.length) % items.length;
+            updateCarouselPosition2();
+            highlightActiveThumbnail2();
+            moveThumbnails2();
+        }
+
+        function setCurrentSlide2(index) {
+            currentIndex2 = index;
+            updateCarouselPosition2();
+            highlightActiveThumbnail2();
+            moveThumbnails2();
+        }
+
+        function updateCarouselPosition2() {
+            const carouselInner2 = document.getElementById('carousel-inner2');
+            carouselInner2.style.transform = `translateX(-${currentIndex2 * 100}%)`;
+        }
+
+        function highlightActiveThumbnail2() {
+            const thumbnails2 = document.querySelectorAll('#image-queue2 .queue-image');
+            thumbnails2.forEach((thumbnail, index) => {
+                if (index === currentIndex2) {
+                    thumbnail.classList.add('active');
+                } else {
+                    thumbnail.classList.remove('active');
+                }
+            });
+        }
+
+        function moveThumbnails2() {
+            const thumbnailContainer2 = document.getElementById('image-queue2');
+            thumbnailContainer2.style.transform = `translateX(-${currentIndex2 * 110}px)`;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCarouselPosition();
+            highlightActiveThumbnail();
+            updateCarouselPosition2();
+            highlightActiveThumbnail2();
+        });
+    </script>
+
 </body>
+
 
 </html>
