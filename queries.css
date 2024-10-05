@@ -1,0 +1,51 @@
+@media (max-width: 480px) {
+	nav {
+		display: none;
+		flex-direction: column;
+	}
+
+	hr {
+		display: block;
+	}
+
+	nav ul li {
+		display: flex;
+		font-weight: bold;
+	}
+
+	header {
+		text-align: left;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+	}
+
+	.menu_burger {
+		display: block;
+	}
+
+	.hero {
+		padding: 30px 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+
+	}
+
+	.hero h2 {
+		font-size: 1.5rem;
+	}
+
+	#about .container p {
+		font-size: 1.5rem;
+		text-align: left;
+	}
+}
+
+@media (max-width: 1028px) {
+	#about .container p {
+		font-size: 1.5rem;
+	}
+}

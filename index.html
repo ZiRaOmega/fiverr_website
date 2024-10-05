@@ -6,23 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MIANED - High-Quality Gardening Tools</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="queries.css">
 </head>
 
 
 <body>
     <header>
         <div class="logo">
-            <h1>MIANED</h1>
+            <h1><a class="main_title" href="#home">MIANED</a></h1>
         </div>
-        <nav>
+        
+        <div class="menu_burger">
+            <svg class="vbp-header-menu-button__svg">
+                <line x1="0" y1="50%" x2="100%" y2="50%" class="top" shape-rendering="crispEdges" />
+                <line x1="0" y1="50%" x2="100%" y2="50%" class="middle" shape-rendering="crispEdges" />
+                <line x1="0" y1="50%" x2="100%" y2="50%" class="bottom" shape-rendering="crispEdges" />
+            </svg>
+        </div>
+    </header>
+    <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
+                <hr>
                 <li><a href="#about">About Us</a></li>
+                <hr>
                 <li><a href="#products">Products</a></li>
+                <hr>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-    </header>
 
     <section id="home">
         <div class="hero">
@@ -36,12 +48,13 @@
         <div class="container">
             <h2>About MIANED</h2>
             <p>
-                Our company was founded by a young couple with a passion for gardening. Having always dreamed of creating the perfect green space, we decided to turn our passion into a business dedicated to helping others create their own dream gardens. Our mission is simple: to provide innovative, high-quality gardening tools that make garden maintenance easier and more enjoyable.
+                Our company was founded by a young couple with a passion for gardening. Having always dreamed of creating the perfect green space, we decided to turn our passion into a business dedicated to helping others create their own dream gardens. Our mission is simple: to provide innovative, high-quality gardening tools that make garden maintenance easier and more enjoyable.<br>
+                <br>
 
-                It all started in our own garden, where we experimented and perfected our products. Believing that great tools make all the difference, we focused on durability, ergonomics, and efficiency. Thanks to our commitment to excellence and deep understanding of the needs of both amateur and professional gardeners, we quickly earned the trust of our community.
+                It all started in our own garden, where we experimented and perfected our products. Believing that great tools make all the difference, we focused on durability, ergonomics, and efficiency. Thanks to our commitment to excellence and deep understanding of the needs of both amateur and professional gardeners, we quickly earned the trust of our community.<br><br>
                 
                 Today, our company continues to grow, driven by strong values of integrity, passion, and exceptional customer service. We are proud to contribute to the beauty and sustainability of gardens wherever our products are used.
-                Our products are designed to last, using durable materials like stainless steel and innovative systems to enhance your gardening experience.
+                Our products are designed to last, using durable materials like stainless steel and innovative systems to enhance your gardening experience.<br><br>
             </p>
         </div>
     </section>
@@ -123,7 +136,7 @@
     </section>
 
     <section id="contact">
-        <div class="container">
+        <div class="container contact_container">
             <h2>Contact Us</h2>
             <p>Have questions or want to know more about our products? Contact us now!</p>
             <a href="mailto:contact@MIANED.com" class="btn">Send an Email</a>
@@ -135,6 +148,7 @@
             <p>&copy; 2024 MIANED - All Rights Reserved | <a href="http://www.mianed.com">www.mianed.com</a></p>
         </div>
     </footer>
+    <a id="button"></a>
 
     <script>
         let currentIndex = 0;
@@ -200,13 +214,51 @@
             });
         }
 
+        function smoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        }
+
+        function topButton() {
+            var btn = document.getElementById('button');
+
+            // Show or hide the button based on scroll position
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    btn.classList.add('show');
+                } else {
+                    btn.classList.remove('show');
+                }
+            });
+
+            // Scroll to the top when the button is clicked
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'  // Smooth scrolling
+                });
+            });
+        }
+
+
         document.addEventListener('DOMContentLoaded', () => {
             updateCarouselPosition();
             highlightActiveThumbnail();
             updateCarouselPosition2();
             highlightActiveThumbnail2();
+            smoothScroll();
+            topButton();
         });
     </script>
+    <script src="script.js"></script>
 
 </body>
 
